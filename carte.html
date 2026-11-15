@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma carte — AERDZ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header no-print">
+  <div class="container nav">
+    <a href="index.html" class="logo"><svg viewBox="0 0 48 48" width="38" height="38"><path fill="#22c55e" d="M24 4 4 14v6c0 12 8 20 20 24 12-4 20-12 20-24v-6L24 4z"/><path fill="#fff" d="M24 12l-8 4 8 4 8-4-8-4zm-8 8v6l8 4 8-4v-6l-8 4-8-4z"/></svg><span>AERDZ <strong>Dagana</strong></span></a>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a><a href="inscription.html">S'inscrire</a>
+      <a href="carte.html" class="active">Ma carte</a><a href="admin.html">Admin</a>
+    </nav>
+    <button class="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container narrow">
+    <section id="vue-recherche" class="no-print">
+      <h1 class="page-title">Consulter ma carte étudiant</h1>
+      <p class="page-sub">Saisissez l'email utilisé ou votre numéro de carte (ex : AERDZ-2026-001).</p>
+      <form id="form-recherche" class="card">
+        <div class="field"><label for="recherche-val">Email ou numéro de carte</label><input type="text" id="recherche-val" placeholder="Ex : nom@exemple.com ou AERDZ-2026-001" required></div>
+        <div class="form-actions"><button type="submit" class="btn btn-primary">Consulter</button></div>
+      </form>
+      <div id="msg-recherche" class="alerte hidden"></div>
+    </section>
+
+    <!-- CARTE AERDZ -->
+    <section id="vue-carte" class="hidden">
+      <div class="center no-print" style="margin-bottom:20px">
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimer / Télécharger</button>
+      </div>
+
+      <article class="carte-aerdz" id="carte">
+        <div class="carte-watermark"></div>
+
+        <!-- En-tête -->
+        <div class="carte-head">
+          <div class="carte-head-logo">
+            <svg viewBox="0 0 100 100" width="85" height="85">
+              <circle cx="50" cy="50" r="48" fill="#fff" stroke="#0f5c1f" stroke-width="4"/>
+              <path d="M50 20 L20 50 L50 80 L80 50 Z" fill="none" stroke="#0f5c1f" stroke-width="2"/>
+              <path d="M50 20 L35 35 L50 50 L65 35 Z" fill="#0f5c1f"/>
+              <circle cx="50" cy="45" r="8" fill="#0f5c1f"/>
+              <path d="M42 55 Q50 70 58 55 Z" fill="#0f5c1f"/>
+              <path id="curve" d="M 15 50 A 35 35 0 1 1 85 50" fill="none"/>
+              <text font-size="6.5" font-weight="bold" fill="#0f5c1f" font-family="Arial">
+                <textPath href="#curve" startOffset="8%">Amicale des Étudiants Ressortissants de Dagana à l'UASZ</textPath>
+              </text>
+            </svg>
+          </div>
+          <div class="carte-head-titre">
+            <div class="ct-top">AMICALE DES ÉTUDIANTS RESSORTISSANTS<br>DE DAGANA À L'UASZ</div>
+            <div class="ct-main">(AERDZ)</div>
+          </div>
+        </div>
+
+        <div class="carte-badge-titre">CARTE ÉTUDIANT</div>
+
+        <!-- Corps -->
+        <div class="carte-body">
+          <div class="carte-infos">
+            <div class="carte-row">
+              <div class="carte-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+              <div class="carte-data"><span class="cd-label">Nom & Prénom :</span><span class="cd-val" id="c-nom-prenom">—</span></div>
+            </div>
+            <div class="carte-row">
+              <div class="carte-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg></div>
+              <div class="carte-data"><span class="cd-label">Filière :</span><span class="cd-val" id="c-filiere">—</span></div>
+            </div>
+            <div class="carte-row">
+              <div class="carte-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg></div>
+              <div class="carte-data"><span class="cd-label">Niveau :</span><span class="cd-val" id="c-niveau">—</span></div>
+            </div>
+            <div class="carte-row">
+              <div class="carte-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+              <div class="carte-data"><span class="cd-label">Téléphone :</span><span class="cd-val" id="c-telephone">—</span></div>
+            </div>
+            <div class="carte-row">
+              <div class="carte-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg></div>
+              <div class="carte-data"><span class="cd-label">Année Universitaire :</span><span class="cd-val" id="c-annee">—</span></div>
+            </div>
+          </div>
+
+          <div class="carte-photo-wrapper"><div class="carte-photo" id="carte-photo"><span>Photo</span></div></div>
+        </div>
+
+        <!-- Pied -->
+        <div class="carte-footer">
+          <div class="cf-numero"><span class="cf-num-label">N° Carte :</span><span class="cf-num-val" id="c-num">—</span></div>
+          <div class="cf-barcode"></div>
+          <div class="cf-slogan">Ensemble pour la réussite<br>des étudiants de Dagana</div>
+        </div>
+      </article>
+
+      <div class="center no-print" style="margin-top:20px">
+        <button class="btn btn-outline" id="btn-retour">← Nouvelle recherche</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer no-print"><div class="footer-bottom">© 2025 AERDZ — 📞 770654394</div></footer>
+<script src="js/data.js"></script>
+<script src="js/carte.js"></script>
+</body>
+</html>

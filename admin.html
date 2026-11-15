@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration — AERDZ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="logo"><svg viewBox="0 0 48 48" width="38" height="38"><path fill="#22c55e" d="M24 4 4 14v6c0 12 8 20 20 24 12-4 20-12 20-24v-6L24 4z"/><path fill="#fff" d="M24 12l-8 4 8 4 8-4-8-4zm-8 8v6l8 4 8-4v-6l-8 4-8-4z"/></svg><span>AERDZ <strong>Dagana</strong></span></a>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a><a href="inscription.html">S'inscrire</a>
+      <a href="carte.html">Ma carte</a><a href="admin.html" class="active">Admin</a>
+    </nav>
+    <button class="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container">
+
+    <!-- LOGIN -->
+    <section id="vue-login" class="narrow center-block">
+      <h1 class="page-title">Espace administrateur</h1>
+      <p class="page-sub">Accès réservé à l'équipe AERDZ.</p>
+      <form id="form-login" class="card">
+        <div class="field">
+          <label for="motdepasse">Mot de passe</label>
+          <input type="password" id="motdepasse" placeholder="••••••••" required>
+          <small class="error" data-for="motdepasse"></small>
+        </div>
+        <div class="form-actions"><button type="submit" class="btn btn-primary">Se connecter</button></div>
+      </form>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="vue-dashboard" class="hidden">
+      <div class="dash-head">
+        <h1 class="page-title">Tableau de bord</h1>
+        <button id="btn-logout" class="btn btn-outline btn-sm">Se déconnecter</button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat"><span class="stat-num" id="stat-total">0</span><span>Total</span></div>
+        <div class="stat stat-warn"><span class="stat-num" id="stat-attente">0</span><span>En attente</span></div>
+        <div class="stat stat-ok"><span class="stat-num" id="stat-valide">0</span><span>Validés</span></div>
+        <div class="stat stat-danger"><span class="stat-num" id="stat-rejete">0</span><span>Rejetés</span></div>
+      </div>
+
+      <div class="toolbar card">
+        <input type="search" id="recherche" placeholder="Rechercher par nom, prénom, filière, niveau, email…">
+        <select id="filtre-statut">
+          <option value="">Tous les statuts</option>
+          <option value="en_attente">En attente</option>
+          <option value="valide">Validés</option>
+          <option value="rejete">Rejetés</option>
+        </select>
+        <button id="btn-export" class="btn btn-primary btn-sm">Exporter CSV</button>
+      </div>
+
+      <div class="table-wrap card">
+        <table class="tableau">
+          <thead>
+            <tr>
+              <th>Photo</th><th>Nom & Prénom</th><th>Filière / Niveau</th><th>Contact</th>
+              <th>Paiement Wave</th><th>Statut</th><th>N° Carte</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <p id="vide" class="vide hidden">Aucune inscription ne correspond à votre recherche.</p>
+      </div>
+
+      <div class="card small-card">
+        <h3>Changer le mot de passe administrateur</h3>
+        <form id="form-pwd" class="inline-form">
+          <input type="password" id="ancien-pwd" placeholder="Ancien mot de passe" required>
+          <input type="password" id="nouveau-pwd" placeholder="Nouveau mot de passe (min 6)" required>
+          <button type="submit" class="btn btn-primary btn-sm">Mettre à jour</button>
+        </form>
+        <p id="pwd-msg" class="hint"></p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- MODAL PREUVE PAIEMENT -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close">×</button>
+    <h3>Preuve de paiement</h3>
+    <img id="modal-img" alt="Preuve de paiement">
+  </div>
+</div>
+
+<footer class="site-footer"><div class="footer-bottom">© 2025 AERDZ — 📞 770654394</div></footer>
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription — AERDZ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="logo"><svg viewBox="0 0 48 48" width="38" height="38"><path fill="#22c55e" d="M24 4 4 14v6c0 12 8 20 20 24 12-4 20-12 20-24v-6L24 4z"/><path fill="#fff" d="M24 12l-8 4 8 4 8-4-8-4zm-8 8v6l8 4 8-4v-6l-8 4-8-4z"/></svg><span>AERDZ <strong>Dagana</strong></span></a>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="inscription.html" class="active">S'inscrire</a>
+      <a href="carte.html">Ma carte</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <button class="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container narrow">
+    <h1 class="page-title">Formulaire d'inscription</h1>
+    <p class="page-sub">Remplissez tous les champs obligatoires (*). Le paiement Wave (1 000 FCFA) est requis.</p>
+
+    <div id="alerte" class="alerte hidden"></div>
+
+    <form id="form-inscription" class="card" novalidate>
+      <h3 class="section-title">1. Informations personnelles</h3>
+      <div class="grid-2">
+        <div class="field"><label for="nom">Nom *</label><input type="text" id="nom" placeholder="Ex : DIALLO" required><small class="error" data-for="nom"></small></div>
+        <div class="field"><label for="prenom">Prénom *</label><input type="text" id="prenom" placeholder="Ex : Ousmane" required><small class="error" data-for="prenom"></small></div>
+      </div>
+
+      <div class="field"><label for="filiere">Filière *</label><input type="text" id="filiere" list="filieres" placeholder="Ex : Mathématiques - Informatique" required>
+        <datalist id="filieres"><option>Informatique</option><option>Mathématiques - Informatique</option><option>Gestion</option><option>Comptabilité</option><option>Droit</option><option>Médecine</option><option>Pharmacie</option><option>Agronomie</option><option>Lettres Modernes</option><option>Sciences Économiques</option><option>Physique-Chimie</option><option>Anglais</option></datalist>
+        <small class="error" data-for="filiere"></small>
+      </div>
+
+      <div class="field"><label for="niveau">Niveau d'études *</label>
+        <select id="niveau" required>
+          <option value="">— Sélectionnez —</option>
+          <option>Licence 1</option><option>Licence 2</option><option>Licence 3</option>
+          <option>Master 1</option><option>Master 2</option><option>Doctorat</option>
+        </select>
+        <small class="error" data-for="niveau"></small>
+      </div>
+
+      <div class="grid-2">
+        <div class="field"><label for="telephone">Téléphone *</label><input type="tel" id="telephone" placeholder="Ex : 77 123 45 67" required><small class="error" data-for="telephone"></small></div>
+        <div class="field"><label for="email">Email *</label><input type="email" id="email" placeholder="nom@exemple.com" required><small class="error" data-for="email"></small></div>
+      </div>
+
+      <h3 class="section-title">2. Photo d'identité</h3>
+      <div class="field">
+        <label for="photo">Photo (optionnel — JPG/PNG, max 5 Mo)</label>
+        <input type="file" id="photo" accept="image/png, image/jpeg, image/webp">
+        <div class="photo-preview" id="photo-preview" hidden><img id="photo-img" alt="Aperçu"><button type="button" class="btn-link" id="retirer-photo">Retirer</button></div>
+      </div>
+
+      <h3 class="section-title">3. Paiement Wave (1 000 FCFA)</h3>
+      <div class="paiement-info">
+        <p>📱 Envoyez <strong>1 000 FCFA</strong> par <strong>Wave</strong> au <strong>71 037 21 43</strong>, puis indiquez ci-dessous votre numéro de transaction.</p>
+      </div>
+
+      <div class="field">
+        <label for="transaction">Numéro de transaction Wave *</label>
+        <input type="text" id="transaction" placeholder="Ex : TX123456789" required>
+        <small class="error" data-for="transaction"></small>
+      </div>
+
+      <div class="field">
+        <label for="recu">Capture du reçu Wave (optionnel)</label>
+        <input type="file" id="recu" accept="image/png, image/jpeg, image/webp">
+        <div class="photo-preview" id="recu-preview" hidden><img id="recu-img" alt="Aperçu"><button type="button" class="btn-link" id="retirer-recu">Retirer</button></div>
+      </div>
+
+      <div class="form-actions">
+        <a href="index.html" class="btn btn-outline">Annuler</a>
+        <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+      </div>
+    </form>
+
+    <div id="succes" class="succes hidden">
+      <h2>✅ Inscription enregistrée !</h2>
+      <p>Votre demande est en attente de validation. Une fois votre paiement vérifié par l'administrateur, votre carte sera générée.</p>
+      <p>Consultez l'état de votre demande sur la page <a href="carte.html">Ma carte</a>.</p>
+      <div class="actions">
+        <a href="carte.html" class="btn btn-primary">Vérifier ma demande</a>
+        <a href="index.html" class="btn btn-outline">Retour à l'accueil</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-bottom">© 2025 AERDZ — 📞 770654394</div></footer>
+<script src="js/data.js"></script>
+<script src="js/inscription.js"></script>
+</body>
+</html>
